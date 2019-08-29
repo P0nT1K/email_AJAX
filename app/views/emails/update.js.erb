@@ -1,0 +1,7 @@
+<%if @email.read == true%>
+document.getElementById("unread<%=@email.id%>").style.display = "none";
+document.getElementById("button_r").innerHTML = "Marquer comme non lu";
+<% else%>
+document.getElementById("unread<%=@email.id%>").style.display = "";
+document.getElementById("button_r").innerHTML = "Marquer comme lu";
+<% end %>

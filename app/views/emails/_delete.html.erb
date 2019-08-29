@@ -1,0 +1,3 @@
+<li id="<%= email.id%>" class="list-group-item">
+    <%= link_to "Consulter", email_path(email.id), method: :get, remote: true %> <%= email.object%>
+</li>

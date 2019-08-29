@@ -1,0 +1,59 @@
+class TasksController < ApplicationController
+before_action :authenticate_user!
+  def new
+    @categories = Category.all
+  end
+
+  def create
+    @task = Task.new(task_params)
+    @category = Category.find(category_params)
+    @task.category = @category
+    @task.save
+    respond_to do |format|
+      format.html{redirect_to root_path}
+      format.js {}
+    end
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+    @categories = Category.all
+
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update(status: true) 
+    respond_to do |format|
+      format.html{redirect_to tasks_path}
+      format.js {}
+    end
+    flash[:notice] = "Task edited"
+  end
+
+  def index
+    @tasks = Task.all
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @id = params[:id]
+    @task.destroy
+    respond_to do |format|
+      format.html{redirect_to root_path}
+      format.js {}
+    end
+  end
+
+
+  private
+
+  def task_params
+    params.permit(:title, :deadline, :description, :update)
+  end
+
+  def category_params
+    params.require(:Category)
+  end
+
+end

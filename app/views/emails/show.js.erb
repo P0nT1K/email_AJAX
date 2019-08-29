@@ -1,0 +1,3 @@
+document.getElementById('contenu').innerHTML = "";
+document.getElementById('contenu').insertAdjacentHTML("beforeend", " <%= j render 'body', email: @email%>");
+document.getElementById("unread<%=@email.id%>").style.display = "none";

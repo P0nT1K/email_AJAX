@@ -1,0 +1,31 @@
+<div class="container">
+    <%= link_to "Envoyer/Recevoir", emails_path, method: :post, class: "btn btn-info", remote: true %>
+    <!--remote:true-->
+    <br><br>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    Object
+                </div>
+                <ul id="objet" class="list-group list-group-flush">
+                    <% @emails.each do  |email|%>
+                    <%= render 'email', email: email%>
+                    <%end%>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    Contenu
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li id="contenu" class="list-group-item">
+                        Aucun émail séléctionné
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

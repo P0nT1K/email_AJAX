@@ -1,0 +1,26 @@
+<h3><%= email.object%> </h3>
+<h4>
+    <%if email.read == true%>
+    (Lu)
+    <%else%>
+    (Non Lu)
+    <%end%>
+</h4>
+<br>
+<%= email.body%>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <a class="btn btn-primary"
+                <%= link_to "Supprimer", email_path(email.id), method: :delete, remote: true %>
+                </a>
+                </div>
+                <div class="col">
+                <a id="button_r" class="btn btn-primary"
+                    <%= link_to "Marquer comme non lu", email_path(email.id), method:  "put", remote: true %>
+                    </a>
+
+
+                    </div>
+                    </div>
+                    </div>
